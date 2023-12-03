@@ -88,6 +88,10 @@ const orderSchema = new mongoose.Schema(
       type: Number,
       required: true,
     },
+    month: {
+      type: Date,
+      default: Date.now(),
+    }
   },
   {
     timestamps: true,

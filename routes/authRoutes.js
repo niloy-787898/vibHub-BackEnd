@@ -26,13 +26,10 @@ const {
   updateProductQuantityFromCart,
   getAllOrders,
   getSingleOrders,
-  applyCoupon,
-  getAllOrder,
-  getOrderByUserId,
-  updateOrderStatus,
-  getOrders,
+  getMonthWiseOrder,
   updateSingleOrders,
-
+  getYearlyTotalOrders,
+  applyCoupon,
   
 } = require("../controller/userCntrl");
 const {
@@ -55,6 +52,7 @@ router.post("/order/checkout", authMiddleware, checkout);
 router.post("/order/payment-verification", authMiddleware, paymentVerification);
 
 
+
 router.get("/all-user", getAllUser);
 router.get("/refresh-token", handleRefreshToken);
 router.get("/logout", logoutUser);
@@ -62,6 +60,8 @@ router.get("/all-wishlist", authMiddleware, getWishlist);
 router.get("/all-cart", authMiddleware, getUserCart);
 router.get("/get-orders", authMiddleware, getMyOrder);
 router.get("/all-orders", authMiddleware, isAdmin, getAllOrders);
+router.get("/getMonthWiseOrderIncome", authMiddleware, getMonthWiseOrder);
+router.get("/getYearlyTotalOrders", authMiddleware, getYearlyTotalOrders);
 
 router.get("/geta-order/:id", authMiddleware, isAdmin, getSingleOrders);
 router.put("/updatea-order/:id", authMiddleware, isAdmin, updateSingleOrders);
@@ -86,21 +86,7 @@ router.put("/save-address", authMiddleware, saveAddress);
 router.put("/block-user/:id", authMiddleware, isAdmin, blockUser);
 router.put("/unblock-user/:id", authMiddleware, isAdmin, unBlockUser);
 
-// router.post("/cart/coupon", authMiddleware, applyCoupon);
-// router.get("/get-orders", authMiddleware, getOrders);
-// router.get("/all-order", authMiddleware, isAdmin, getAllOrder);
 
-// router.post("/getorderbyuser/:id", authMiddleware, isAdmin, getAllOrder);
-// router.post("/getorderbyuser/:id", authMiddleware, isAdmin, getAllOrder);
-
-
-
-// router.put(
-//   "/order/update-order/:id",
-//   authMiddleware,
-//   isAdmin,
-//   updateOrderStatus
-// );
 
 
 module.exports = router;
